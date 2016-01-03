@@ -8,6 +8,19 @@
 
 (package-initialize)
 
+;; Packages
+;; -------------------------------------------------------------------
+(setq to-install-if-needed '( helm
+                              helm-mt
+                              js-doc
+                              js2-mode
+                              json-mode
+                              aurora-theme
+                              smartparens ))
+
+(dolist (pkg to-install-if-needed)
+  (package-install pkg))
+
 ;; RANDOM
 ;; -------------------------------------------------------------------
 
@@ -92,22 +105,12 @@
 
 ;; Node syntax highlighting
 (setq js2-include-node-externs t)
-;; Airbnb stylguide says they are better for git diffs
+;; Airbnb styleguide says they are better for git diffs
 (setq js2-strict-trailing-comma-warning nil)
 ;; allow missing colon on one-liners
 (setq js2-missing-semi-one-line-override t)
 
 (global-set-key (kbd "<C-return>") 'hs-toggle-hiding)
-
-
-;; JSX
-;; (defun web-mode-custom-indent ()
-;;   "Adjust indents in web-mode from 4 to 2 spaces."
-;;   (setq web-mode-markup-indent-offset 2)
-;;   (setq web-mode-css-indent-offset 2)
-;;   (setq web-mode-code-indent-offset 2))
-
-;; (add-hook 'web-mode-hook 'web-mode-custom-indent)
 
 ;; JSON
 ;; -------------------------------------------------------------------
