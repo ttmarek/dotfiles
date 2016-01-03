@@ -66,6 +66,7 @@
 ;; Multiple Terminal Management
 ;; -------------------------------------------------------------------
 (global-set-key (kbd "C-x t") 'helm-mt)
+(setq multi-term-program "/bin/zsh")
 
 ;; Highlight Matching Parenthesis
 ;; -------------------------------------------------------------------
@@ -145,7 +146,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(term-color-black ((t (:background "gray12" :foreground "gray12"))))
- '(term-color-blue ((t (:background "blue" :foreground "blue"))))
+ '(term-color-blue ((t (:background "deep sky blue" :foreground "deep sky blue"))))
  '(term-color-cyan ((t (:background "cyan" :foreground "cyan"))))
  '(term-color-green ((t (:background "green" :foreground "green"))))
  '(term-color-magenta ((t (:background "dark magenta" :foreground "dark magenta"))))
