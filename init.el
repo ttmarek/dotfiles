@@ -89,7 +89,6 @@
 ;; -------------------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
 
-
 (setq js2-highlight-level 3)
 (setq-default js2-basic-offset 2)       ;two spaced indent
 ;; customisations in custom.el
@@ -101,14 +100,13 @@
 	    (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
 	    (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
-;; (setq sgml-attribute-offset 2)          ;two spaced indent for jsx tags
-
 ;; Node syntax highlighting
 (setq js2-include-node-externs t)
 ;; Airbnb styleguide says they are better for git diffs
 (setq js2-strict-trailing-comma-warning nil)
-;; allow missing colon on one-liners
-(setq js2-missing-semi-one-line-override t)
+;; allow missing semicolons
+(setq js2-strict-missing-semi-warning nil)
+;; (setq js2-missing-semi-one-line-override t)
 
 (global-set-key (kbd "<C-return>") 'hs-toggle-hiding)
 
