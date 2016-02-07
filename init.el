@@ -10,19 +10,21 @@
 
 ;; Packages
 ;; -------------------------------------------------------------------
-(setq to-install-if-needed '( helm
-                              helm-mt
-                              js-doc
-                              js2-mode
-                              json-mode
-                              aurora-theme
-                              smartparens ))
+(setq to-install-if-needed '(helm
+                             helm-mt
+                             js-doc
+                             js2-mode
+                             json-mode
+                             aurora-theme
+                             smartparens ))
 
 (dolist (pkg to-install-if-needed)
   (package-install pkg))
 
 ;; RANDOM
 ;; -------------------------------------------------------------------
+;; Delete trailing whitespace on save
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; NO TABS
 (setq-default indent-tabs-mode nil)
@@ -79,7 +81,6 @@
 ;; Multiple Terminal Management
 ;; -------------------------------------------------------------------
 (global-set-key (kbd "C-x t") 'helm-mt)
-(setq multi-term-program "/bin/zsh")
 
 ;; Highlight Matching Parenthesis
 ;; -------------------------------------------------------------------
@@ -91,22 +92,21 @@
 
 (setq js2-highlight-level 3)
 (setq-default js2-basic-offset 2)       ;two spaced indent
-;; customisations in custom.el
-(add-hook 'js2-mode-hook          
-	  (lambda ()
-	    ;; Hide code blocks
-	    (hs-minor-mode t)
-	    ;; js-doc.el hooks:
-	    (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
-	    (define-key js2-mode-map "@" 'js-doc-insert-tag)))
+(add-hook 'js2-mode-hook
+          (lambda ()
+            ;; Hide code blocks
+            (hs-minor-mode t)
+            ;; js-doc.el hooks:
+            (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
+            (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
 ;; Node syntax highlighting
 (setq js2-include-node-externs t)
-;; Airbnb styleguide says they are better for git diffs
-(setq js2-strict-trailing-comma-warning nil)
 ;; allow missing semicolons
 (setq js2-strict-missing-semi-warning nil)
-;; (setq js2-missing-semi-one-line-override t)
+;; indent switch blocks
+(setq js2-indent-switch-body t)
+(setq js-switch-indent-offset 2)
 
 (global-set-key (kbd "<C-return>") 'hs-toggle-hiding)
 
@@ -121,7 +121,6 @@
 
 ;; APPEARANCE
 ;; -------------------------------------------------------------------
-
 (setq inhibit-startup-screen t)
 
 (global-linum-mode t)                   ; enable line #s
