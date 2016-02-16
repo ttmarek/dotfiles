@@ -10,3 +10,6 @@ chsh -s /bin/zsh
 echo "Setup .emacs.d"
 mkdir -p $HOME/.emacs.d
 ln -s $PWD/.init.el $HOME/.emacs.d/init.el
+
+echo "Setup custom dictionary"
+ln -s $PWD/.aspell.en.pws $HOME/.aspell.en.pws

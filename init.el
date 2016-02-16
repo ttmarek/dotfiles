@@ -15,6 +15,7 @@
                              js-doc
                              js2-mode
                              json-mode
+                             markdown-mode
                              aurora-theme
                              smartparens ))
 
@@ -118,6 +119,14 @@
           (lambda ()
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
+
+;; MARKDOWN
+;; -------------------------------------------------------------------
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; APPEARANCE
 ;; -------------------------------------------------------------------
