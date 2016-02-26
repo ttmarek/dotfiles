@@ -15,6 +15,7 @@
                              js-doc
                              js2-mode
                              json-mode
+                             yaml-mode
                              markdown-mode
                              aurora-theme
                              smartparens ))
@@ -68,6 +69,13 @@
 ;; SMARTPARENS
 ;; -------------------------------------------------------------------
 (smartparens-global-mode t)
+
+;; YAML
+;; -------------------------------------------------------------------
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-hook 'yaml-mode-hook
+    '(lambda ()
+       (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; HELM
 ;; -------------------------------------------------------------------
