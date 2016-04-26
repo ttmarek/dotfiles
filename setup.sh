@@ -9,7 +9,9 @@ chsh -s /bin/zsh
 
 echo "Setup .emacs.d"
 mkdir -p $HOME/.emacs.d
-ln -s $PWD/.init.el $HOME/.emacs.d/init.el
+ln -s $PWD/init.el $HOME/.emacs.d/init.el
 
 echo "Setup custom dictionary"
 ln -s $PWD/.aspell.en.pws $HOME/.aspell.en.pws
+
+echo "You'll need to logout and login again for the zsh changes to take effect"
