@@ -6,13 +6,18 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
+;; Activate all the packages
 (package-initialize)
+
+;; Fetch the list of available packages
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; Packages
 ;; -------------------------------------------------------------------
-(setq to-install-if-needed '(helm
+(setq to-install-if-needed '(js-doc
+                             helm
                              helm-mt
-                             js-doc
                              js2-mode
                              json-mode
                              yaml-mode
@@ -20,8 +25,11 @@
                              aurora-theme
                              smartparens ))
 
+;; Loop through the list of packages and install any if they haven't
+;; been already
 (dolist (pkg to-install-if-needed)
-  (package-install pkg))
+  (unless (package-installed-p pkg)
+    (package-install pkg)))
 
 ;; RANDOM
 ;; -------------------------------------------------------------------
@@ -83,6 +91,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x f") 'helm-find-files)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-z") 'helm-select-action)
 (semantic-mode 1)
