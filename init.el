@@ -21,6 +21,7 @@
                              js2-mode
                              json-mode
                              yaml-mode
+                             scss-mode
                              markdown-mode
                              aurora-theme
                              smartparens ))
@@ -84,6 +85,10 @@
 (add-hook 'yaml-mode-hook
     '(lambda ()
        (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+;; SASS
+;; -------------------------------------------------------------------
+(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 
 ;; HELM
 ;; -------------------------------------------------------------------
