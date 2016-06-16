@@ -16,6 +16,7 @@
 ;; Packages
 ;; -------------------------------------------------------------------
 (setq to-install-if-needed '(js-doc
+                             typescript-mode
                              helm
                              helm-mt
                              js2-mode
