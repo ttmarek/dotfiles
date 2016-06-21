@@ -1,6 +1,7 @@
 # Make sure prerequisites are installed
 command -v emacs >/dev/null 2>&1 || { echo "Please install emacs first." >&2; exit 1; }
 command -v git >/dev/null 2>&1 || { echo "Please install git first." >&2; exit 1; }
+command -v zsh >/dev/null 2>&1 || { echo "Please install zsh first." >&2; exit 1; }
 
 echo "Set link to .zshrc"
 ln -s $PWD/.zshrc $HOME/.zshrc
@@ -15,7 +16,7 @@ echo "Setup .emacs.d"
 mkdir -p $HOME/.emacs.d
 ln -s $PWD/init.el $HOME/.emacs.d/init.el
 
-echo "Set emacs as the default editor"
+echo "Set emacs as the default editor for git"
 # For git commits, merges, etc.
 git config --global core.editor emacs
 
