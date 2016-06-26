@@ -133,7 +133,8 @@
 ;; indent switch blocks
 (setq js2-indent-switch-body t)
 (setq js-switch-indent-offset 2)
-
+;; allow trailing commas (better git diffs)
+(setq js2-strict-trailing-comma-warning nil)
 (global-set-key (kbd "<C-return>") 'hs-toggle-hiding)
 
 ;; TYPESCRIPT
