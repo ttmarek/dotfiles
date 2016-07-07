@@ -15,12 +15,10 @@
 
 ;; Packages
 ;; -------------------------------------------------------------------
-(setq to-install-if-needed '(js-doc
-                             tide
+(setq to-install-if-needed '(tide
                              company
                              helm
                              helm-mt
-                             js2-mode
                              json-mode
                              yaml-mode
                              scss-mode
@@ -111,31 +109,6 @@
 ;; Highlight Matching Parenthesis
 ;; -------------------------------------------------------------------
 (show-paren-mode 1)
-
-;; JAVASCRIPT
-;; -------------------------------------------------------------------
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
-
-(setq js2-highlight-level 3)
-(setq-default js2-basic-offset 2)       ;two spaced indent
-(add-hook 'js2-mode-hook
-          (lambda ()
-            ;; Hide code blocks
-            (hs-minor-mode t)
-            ;; js-doc.el hooks:
-            (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
-            (define-key js2-mode-map "@" 'js-doc-insert-tag)))
-
-;; Node syntax highlighting
-(setq js2-include-node-externs t)
-;; allow missing semicolons
-(setq js2-strict-missing-semi-warning nil)
-;; indent switch blocks
-(setq js2-indent-switch-body t)
-(setq js-switch-indent-offset 2)
-;; allow trailing commas (better git diffs)
-(setq js2-strict-trailing-comma-warning nil)
-(global-set-key (kbd "<C-return>") 'hs-toggle-hiding)
 
 ;; TYPESCRIPT
 ;; -------------------------------------------------------------------
