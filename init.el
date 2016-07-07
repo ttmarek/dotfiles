@@ -21,6 +21,7 @@
                              yaml-mode
                              scss-mode
                              markdown-mode
+                             web-mode
                              aurora-theme
                              smartparens ))
 
@@ -107,6 +108,18 @@
 ;; Highlight Matching Parenthesis
 ;; -------------------------------------------------------------------
 (show-paren-mode 1)
+
+;; JavaScript
+;; -------------------------------------------------------------------
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+
+;; Indentation
+(setq web-mode-code-indent-offset 2)    ; (e.g javascript)
+(setq web-mode-markup-indent-offset 2)  ; (e.g html, jsx)
+
+;; Adds JSX support in .js files
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js\\'")))
 
 ;; JSON
 ;; -------------------------------------------------------------------
