@@ -15,16 +15,13 @@
 
 ;; Packages
 ;; -------------------------------------------------------------------
-(setq to-install-if-needed '(js-doc
-                             tide
-                             company
-                             helm
+(setq to-install-if-needed '(helm
                              helm-mt
-                             js2-mode
                              json-mode
                              yaml-mode
                              scss-mode
                              markdown-mode
+                             web-mode
                              aurora-theme
                              smartparens ))
 
@@ -112,62 +109,17 @@
 ;; -------------------------------------------------------------------
 (show-paren-mode 1)
 
-;; JAVASCRIPT
+;; JavaScript
 ;; -------------------------------------------------------------------
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
-(setq js2-highlight-level 3)
-(setq-default js2-basic-offset 2)       ;two spaced indent
-(add-hook 'js2-mode-hook
-          (lambda ()
-            ;; Hide code blocks
-            (hs-minor-mode t)
-            ;; js-doc.el hooks:
-            (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
-            (define-key js2-mode-map "@" 'js-doc-insert-tag)))
+;; Indentation
+(setq web-mode-code-indent-offset 2)    ; (e.g javascript)
+(setq web-mode-markup-indent-offset 2)  ; (e.g html, jsx)
 
-;; Node syntax highlighting
-(setq js2-include-node-externs t)
-;; allow missing semicolons
-(setq js2-strict-missing-semi-warning nil)
-;; indent switch blocks
-(setq js2-indent-switch-body t)
-(setq js-switch-indent-offset 2)
-;; allow trailing commas (better git diffs)
-(setq js2-strict-trailing-comma-warning nil)
-(global-set-key (kbd "<C-return>") 'hs-toggle-hiding)
-
-;; TYPESCRIPT
-;; -------------------------------------------------------------------
-;; Tide uses tsserver, which requires node. You have to tell emacs
-;; where to find node by adding a path to its bin folder in the
-;; exec-path variable.
-;; See: https://github.com/ananthakumaran/tide/issues/13
-(setq exec-path (append exec-path '("~/.nvm/versions/node/v6.0.0/bin")))
-
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  (company-mode +1))
-
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-
-;; format options
-(setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
-;; see https://github.com/Microsoft/TypeScript/blob/cc58e2d7eb144f0b2ff89e6a6685fb4deaa24fde/src/server/protocol.d.ts#L421-473 for the full list available options
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+;; Adds JSX support in .js files
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js\\'")))
 
 ;; JSON
 ;; -------------------------------------------------------------------
