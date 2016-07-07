@@ -15,9 +15,7 @@
 
 ;; Packages
 ;; -------------------------------------------------------------------
-(setq to-install-if-needed '(tide
-                             company
-                             helm
+(setq to-install-if-needed '(helm
                              helm-mt
                              json-mode
                              yaml-mode
@@ -109,38 +107,6 @@
 ;; Highlight Matching Parenthesis
 ;; -------------------------------------------------------------------
 (show-paren-mode 1)
-
-;; TYPESCRIPT
-;; -------------------------------------------------------------------
-;; Tide uses tsserver, which requires node. You have to tell emacs
-;; where to find node by adding a path to its bin folder in the
-;; exec-path variable.
-;; See: https://github.com/ananthakumaran/tide/issues/13
-(setq exec-path (append exec-path '("~/.nvm/versions/node/v6.0.0/bin")))
-
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  (company-mode +1))
-
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-
-;; format options
-(setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
-;; see https://github.com/Microsoft/TypeScript/blob/cc58e2d7eb144f0b2ff89e6a6685fb4deaa24fde/src/server/protocol.d.ts#L421-473 for the full list available options
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
 
 ;; JSON
 ;; -------------------------------------------------------------------
