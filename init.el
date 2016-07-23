@@ -17,6 +17,7 @@
 ;; -------------------------------------------------------------------
 (setq to-install-if-needed '(helm
                              helm-mt
+                             magit
                              json-mode
                              yaml-mode
                              scss-mode
