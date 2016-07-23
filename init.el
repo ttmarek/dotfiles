@@ -114,13 +114,24 @@
 ;; -------------------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
-;; Indentation
-(setq web-mode-code-indent-offset 2)    ; (e.g javascript)
-(setq web-mode-markup-indent-offset 2)  ; (e.g html, jsx)
-
 ;; Adds JSX support in .js files
 (setq web-mode-content-types-alist
       '(("jsx" . "\\.js\\'")))
+
+(defun web-mode-hooks ()
+  "Hooks for web-mode"
+  ;; indentation
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-attr-indent-offset 2))
+
+(add-hook 'web-mode-hook 'web-mode-hooks)
+
+;; CSS
+;; -------------------------------------------------------------------
+(defun css-mode-hooks ()
+  "Hooks for css-mode"
+  (setq css-indent-offset 2))
 
 ;; JSON
 ;; -------------------------------------------------------------------
