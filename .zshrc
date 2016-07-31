@@ -29,9 +29,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias ctrlnocaps="/usr/bin/setxkbmap -option 'ctrl:nocaps'"
 
-# nvm
-[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
-
-# rvm
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Allow emacs to track directory
+if [ -n "$INSIDE_EMACS" ]; then
+  chpwd() { print -P "\033AnSiTc %d" }
+  print -P "\033AnSiTu %n"
+  print -P "\033AnSiTc %d"
+fi
