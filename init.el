@@ -23,6 +23,7 @@
                              scss-mode
                              markdown-mode
                              web-mode
+                             js2-mode
                              aurora-theme
                              smartparens ))
 
@@ -114,13 +115,27 @@
 ;; -------------------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
-;; Adds JSX support in .js files
-(setq web-mode-content-types-alist
-      '(("jsx" . "\\.js\\'")))
+(defun js2-mode-hooks ()
+  "Hooks for js2-mode"
+  ;; enable nodejs syntax highlighting
+  (setq js2-include-node-externs t)
+  ;; enable custom variable highlighting
+  (setq js2-global-externs
+        '("describe" "it" "expect" "beforeEach" "afterEach" "jest"))
+  ;; disable trailing comma warning
+  (setq js2-strict-trailing-comma-warning nil))
+
+(add-hook 'js2-minor-mode-hook 'js2-mode-hooks)
 
 (defun web-mode-hooks ()
   "Hooks for web-mode"
-  ;; indentation
+  ;; enable js2 minor mode
+  (js2-minor-mode)
+  ;; enable JSX support
+  (setq web-mode-content-type "jsx")
+  ;; disable auto-quote attributes
+  (setq web-mode-enable-auto-quoting nil)
+  ;; set indentation
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-attr-indent-offset 2))
@@ -161,5 +176,13 @@
 (toggle-scroll-bar -1)                  ; hide scrollbar
 
 (menu-bar-mode -1)                      ; hide menubar
+
+;; Set font face and size
+(defun font-exists (font)
+  "check if font exists"
+  (if (null (x-list-fonts font)) nil t))
+
+(if (font-exists "inconsolata")
+    (set-face-attribute 'default nil :font "inconsolata" :height 140))
 
 (load-theme 'aurora t)
