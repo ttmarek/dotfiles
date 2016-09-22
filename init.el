@@ -79,35 +79,41 @@
   ("M-x" . counsel-M-x)
   ("C-x C-f" . counsel-find-file))
 
+(use-package smex :ensure t)
+
 (use-package multi-term
   :ensure t
   :bind
   ("C-x t" . multi-term))
 
+(use-package js2-mode
+  :ensure t
+  :init
+  (defun js2-mode-hooks ()
+    (setq js2-global-externs
+          '("describe"
+            "it"
+            "expect"
+            "beforeEach"
+            "afterEach"
+            "jest"))
+    (setq js2-strict-trailing-comma-warning nil)
+    (setq js2-include-node-externs t))
+  (add-hook 'js2-minor-mode-hook 'js2-mode-hooks))
+
 (use-package web-mode
   :ensure t
   :mode "\\.js\\'"
   :init
-  (setq web-mode-content-type "jsx")
-  (setq web-mode-enable-auto-quoting nil)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-attr-indent-offset 2)
-  :config
-  (js2-minor-mode))
-
-(use-package js2-mode
-  :ensure t
-  :init
-  (setq js2-global-externs
-        '("describe"
-          "it"
-          "expect"
-          "beforeEach"
-          "afterEach"
-          "jest"))
-  (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-include-node-externs t))
+  (defun web-mode-hooks ()
+    "Hooks for web-mode"
+    (js2-minor-mode)
+    (setq web-mode-content-type "jsx")
+    (setq web-mode-enable-auto-quoting nil)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-attr-indent-offset 2))
+  (add-hook 'web-mode-hook 'web-mode-hooks))
 
 (use-package json-mode
   :ensure t
