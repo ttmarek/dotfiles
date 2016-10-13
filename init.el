@@ -118,8 +118,11 @@
 (use-package json-mode
   :ensure t
   :init
-  (make-local-variable 'js-indent-level)
-  (setq js-indent-level 2))
+  (defun json-mode-hooks ()
+    "Hooks for json-mode"
+    (make-local-variable 'js-indent-level)
+    (setq js-indent-level 2))
+  (add-hook 'json-mode-hook 'json-mode-hooks))
 
 (use-package markdown-mode
   :ensure t
