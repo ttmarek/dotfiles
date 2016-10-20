@@ -48,6 +48,12 @@
   :init
   (setq css-indent-offset 2))
 
+(use-package undo-tree
+  :ensure t
+  :config
+  (setq undo-tree-visualizer-diff t)
+  (global-undo-tree-mode))
+
 (use-package doom-themes
   :ensure t
   :config
