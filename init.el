@@ -54,6 +54,11 @@
   (setq undo-tree-visualizer-diff t)
   (global-undo-tree-mode))
 
+(use-package typescript-mode
+  :ensure t
+  :config
+  (setq typescript-indent-level 2))
+
 (use-package doom-themes
   :ensure t
   :config
