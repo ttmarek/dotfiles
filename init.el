@@ -30,6 +30,8 @@
 
 (if (font-exists "inconsolata")
     (set-face-attribute 'default nil :font "inconsolata" :height 140))
+;; Set path to ispell
+(setq ispell-program-name "/usr/local/bin/ispell")
 
 ;; Packages
 ;; --------------------------------------------------
