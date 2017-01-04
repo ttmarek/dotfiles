@@ -29,7 +29,8 @@
   (if (null (x-list-fonts font)) nil t))
 
 (if (font-exists "inconsolata")
-    (set-face-attribute 'default nil :font "inconsolata" :height 140))
+    (set-face-attribute 'default nil :font "inconsolata" :height 150))
+
 ;; Set path to ispell
 (setq ispell-program-name "/usr/local/bin/ispell")
 
@@ -54,6 +55,12 @@
   :ensure t
   :config
   (setq typescript-indent-level 2))
+
+(use-package bufshow
+  :ensure t
+  :bind
+  ("<C-right>" . bufshow-next)
+  ("<C-left>" . bufshow-prev))
 
 (use-package doom-themes
   :ensure t
@@ -137,6 +144,16 @@
 
 ;; Custom Functions
 ;; --------------------------------------------------
+(defun presenting-increase-font ()
+  "Increase font size for making presentations"
+  (interactive)
+  (set-face-attribute 'default nil :height 300))
+
+(defun presenting-reset-font ()
+  "Reset font size after making presentations"
+  (interactive)
+  (set-face-attribute 'default nil :font "inconsolata" :height 150))
+
 (defun rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting."
   (interactive)
