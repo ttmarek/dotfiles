@@ -151,7 +151,7 @@
 (defun presenting-increase-font ()
   "Increase font size for making presentations"
   (interactive)
-  (set-face-attribute 'default nil :height 300))
+  (set-face-attribute 'default nil :height 250))
 
 (defun presenting-reset-font ()
   "Reset font size after making presentations"
