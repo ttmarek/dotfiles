@@ -63,8 +63,8 @@
 (use-package bufshow
   :ensure t
   :bind
-  ("<C-right>" . bufshow-next)
-  ("<C-left>" . bufshow-prev))
+  ([right] . bufshow-next)
+  ([left] . bufshow-prev))
 
 (use-package doom-themes
   :ensure t
