@@ -51,6 +51,10 @@
   :init
   (setq css-indent-offset 2))
 
+(use-package org-mode
+  :init
+  (setq org-startup-folded 'showall))
+
 (use-package typescript-mode
   :ensure t
   :config
