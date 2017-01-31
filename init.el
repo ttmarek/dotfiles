@@ -133,6 +133,9 @@
     (setq web-mode-attr-indent-offset 2))
   (add-hook 'web-mode-hook 'web-mode-hooks)
   :config
+  (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
 (use-package json-mode
