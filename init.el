@@ -110,11 +110,14 @@
   :init
   (defun js2-mode-hooks ()
     (setq js2-global-externs
-          '("describe"
+          '("afterAll"
+            "afterEach"
+            "beforeAll"
+            "beforeEach"
+            "describe"
+            "test"
             "it"
             "expect"
-            "beforeEach"
-            "afterEach"
             "jest"))
     (setq js2-strict-trailing-comma-warning nil)
     (setq js2-include-node-externs t))
