@@ -144,6 +144,9 @@
 
 (use-package json-mode
   :ensure t
+  :mode (("\\.json\\'" . json-mode)
+         ("\\.eslintrc\\'" . json-mode)
+         ("\\.babelrc\\'" . json-mode))
   :init
   (defun json-mode-hooks ()
     "Hooks for json-mode"
