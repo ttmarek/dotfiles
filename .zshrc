@@ -29,6 +29,12 @@ source $ZSH/oh-my-zsh.sh
 
 alias ctrlnocaps="/usr/bin/setxkbmap -option 'ctrl:nocaps'"
 
+# Make a directory and cd into it
+mkcdir () {
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
+
 # Allow emacs to track directory
 if [ -n "$INSIDE_EMACS" ]; then
   chpwd() { print -P "\033AnSiTc %d" }
