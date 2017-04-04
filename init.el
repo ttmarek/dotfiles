@@ -156,7 +156,12 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode "\\.md\\'")
+  :mode "\\.md\\'"
+  :init
+  (defun markdown-mode-hooks()
+    "Hooks for markdown mode"
+    (setq fill-column 80))
+  (add-hook 'markdown-mode-hook 'markdown-mode-hooks))
 
 ;; Custom Functions
 ;; --------------------------------------------------
