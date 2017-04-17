@@ -55,6 +55,9 @@
   :init
   (setq org-startup-folded 'showall))
 
+(use-package less-css-mode
+  :ensure t)
+
 (use-package typescript-mode
   :ensure t
   :config
