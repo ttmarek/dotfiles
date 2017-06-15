@@ -69,10 +69,10 @@
   ([right] . bufshow-next)
   ([left] . bufshow-prev))
 
-(use-package doom-themes
+(use-package solarized-theme
   :ensure t
   :config
-  (load-theme 'doom-one t))
+  (load-theme 'solarized-dark t))
 
 (use-package smartparens
   :ensure t
