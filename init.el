@@ -51,6 +51,11 @@
   :init
   (setq css-indent-offset 2))
 
+(use-package term
+  :init
+  (setq term-scroll-to-bottom-on-output t)
+  (setq term-suppress-hard-newline t))
+
 (use-package org-mode
   :init
   (setq org-startup-folded 'showall))
