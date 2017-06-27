@@ -51,6 +51,11 @@
   :init
   (setq css-indent-offset 2))
 
+(use-package rainbow-mode
+  :ensure t
+  :init
+  (add-hook 'css-mode-hook 'rainbow-mode))
+
 (use-package term
   :init
   (setq term-scroll-to-bottom-on-output t)
