@@ -29,6 +29,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias ctrlnocaps="/usr/bin/setxkbmap -option 'ctrl:nocaps'"
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 # Make a directory and cd into it
 mkcdir () {
     mkdir -p -- "$1" &&
