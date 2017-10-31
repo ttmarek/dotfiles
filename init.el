@@ -171,7 +171,11 @@
   :init
   (defun markdown-mode-hooks()
     "Hooks for markdown mode"
-    (setq fill-column 80))
+    (setq fill-column 80)
+    (setq left-margin-width 5)
+    (setq right-margin-width 5)
+    (linum-mode -1)
+    (visual-line-mode))
   (add-hook 'markdown-mode-hook 'markdown-mode-hooks))
 
 ;; Custom Functions
