@@ -73,6 +73,11 @@
   :config
   (setq typescript-indent-level 2))
 
+(use-package thesaurus
+  :ensure t
+  :config
+  (setq thesaurus-bhl-api-key "65e09b66ad5c7c6dfc204d58e122e5da"))
+
 (use-package bufshow
   :ensure t
   :bind
