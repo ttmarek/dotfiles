@@ -123,30 +123,32 @@
   :bind
   ("C-x t" . multi-term))
 
-(use-package rjsx-mode
+(use-package js2-mode
   :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-  (setq js2-basic-offset 2)
-  (setq js2-global-externs
-        '("afterAll"
-          "afterEach"
-          "beforeAll"
-          "beforeEach"
-          "describe"
-          "test"
-          "it"
-          "expect"
-          "jest"))
-  (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-include-node-externs t))
+  :init
+  (defun js2-mode-hooks ()
+    (setq js2-global-externs
+          '("afterAll"
+            "afterEach"
+            "beforeAll"
+            "beforeEach"
+            "describe"
+            "test"
+            "it"
+            "expect"
+            "jest"))
+    (setq js2-strict-trailing-comma-warning nil)
+    (setq js2-include-node-externs t))
+  (add-hook 'js2-minor-mode-hook 'js2-mode-hooks))
 
 (use-package web-mode
   :ensure t
-  :mode "\\.html?\\'"
+  :mode "\\.js\\'"
   :init
   (defun web-mode-hooks ()
     "Hooks for web-mode"
+    (js2-minor-mode)
+    (setq web-mode-content-type "jsx")
     (setq web-mode-enable-auto-quoting nil)
     (setq web-mode-code-indent-offset 2)
     (setq web-mode-markup-indent-offset 2)
