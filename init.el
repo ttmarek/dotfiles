@@ -56,6 +56,16 @@
   :init
   (add-hook 'css-mode-hook 'rainbow-mode))
 
+(use-package counsel-projectile
+  :ensure t
+  :init
+  (counsel-projectile-on))
+
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode))
+
 (use-package term
   :init
   (setq term-scroll-to-bottom-on-output t)
