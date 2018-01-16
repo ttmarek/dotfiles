@@ -1,6 +1,11 @@
 (require 'package)
 
 ;; --------------------------------------------------
+;; Installing all necessary fonts
+;; 1. https://github.com/domtronn/all-the-icons.el#installing-fonts
+;; 2. https://github.com/source-foundry/Hack#package-managers
+
+;; --------------------------------------------------
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; No tabs
