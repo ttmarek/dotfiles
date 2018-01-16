@@ -133,6 +133,11 @@
 
 (use-package smex :ensure t)
 
+(use-package all-the-icons-ivy
+  :ensure t
+  :config
+  (all-the-icons-ivy-setup))
+
 (use-package multi-term
   :ensure t
   :bind
