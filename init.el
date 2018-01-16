@@ -28,8 +28,10 @@
   "check if font exists"
   (if (null (x-list-fonts font)) nil t))
 
-(if (font-exists "inconsolata")
-    (set-face-attribute 'default nil :font "inconsolata" :height 150))
+(if (font-exists "hack")
+    (set-face-attribute 'default nil :font "hack" :height 140)
+  (if (font-exists "inconsolata")
+      (set-face-attribute 'default nil :font "hack" :height 150)))
 
 ;; Set path to ispell
 (setq ispell-program-name "/usr/local/bin/ispell")
