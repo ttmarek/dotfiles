@@ -96,10 +96,13 @@
   ([right] . bufshow-next)
   ([left] . bufshow-prev))
 
-(use-package solarized-theme
+(use-package zerodark-theme
   :ensure t
   :config
-  (load-theme 'solarized-dark t))
+  (load-theme 'zerodark t))
+
+(use-package all-the-icons
+  :ensure t)
 
 (use-package smartparens
   :ensure t
