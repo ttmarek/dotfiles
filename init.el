@@ -10,7 +10,7 @@
 ;; Maximize the emacs window on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;; Line Spacing
-(setq-default line-spacing 7)
+(setq-default line-spacing 10)
 ;; Don't show startup screen
 (setq inhibit-startup-screen t)
 ;; Highlight matching parens
