@@ -138,6 +138,11 @@
   :config
   (all-the-icons-ivy-setup))
 
+(use-package smooth-scrolling
+  :ensure t
+  :config
+  (setq scroll-conservatively 10)
+  (setq scroll-margin 5))
 (use-package multi-term
   :ensure t
   :bind
