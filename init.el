@@ -8,6 +8,8 @@
 ;; --------------------------------------------------
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
+;; Hollow cursor
+(setq-default cursor-type 'hollow)
 ;; No tabs
 (setq-default indent-tabs-mode nil)
 ;; Set folder for emacs backup files
