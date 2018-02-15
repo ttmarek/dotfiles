@@ -1,3 +1,5 @@
+;;; Commentary:
+
 (require 'package)
 
 ;; --------------------------------------------------
@@ -32,7 +34,7 @@
 (menu-bar-mode -1)
 ;; Set font face and size
 (defun font-exists (font)
-  "check if font exists"
+  "Check if FONT exists."
   (if (null (x-list-fonts font)) nil t))
 
 (if (font-exists "hack")
@@ -134,6 +136,7 @@
   ("C-s" . swiper)
   :init
   (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
   (setq ivy-display-style 'fancy)
   :config
   (ivy-mode 1))
