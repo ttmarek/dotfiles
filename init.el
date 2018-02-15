@@ -156,28 +156,21 @@
   :config
   (setq scroll-conservatively 10)
   (setq scroll-margin 5))
+
 (use-package multi-term
   :ensure t
   :bind
   ("C-x t" . multi-term))
 
-(use-package js2-mode
+(use-package prettier-js
   :ensure t
-  :init
-  (defun js2-mode-hooks ()
-    (setq js2-global-externs
-          '("afterAll"
-            "afterEach"
-            "beforeAll"
-            "beforeEach"
-            "describe"
-            "test"
-            "it"
-            "expect"
-            "jest"))
-    (setq js2-strict-trailing-comma-warning nil)
-    (setq js2-include-node-externs t))
-  (add-hook 'js2-minor-mode-hook 'js2-mode-hooks))
+  :config
+  (setq prettier-js-args '("--single-quote" "true"
+                           "--trailing-comma" "all"
+                           "--bracket-spacing" "true")))
+
+(use-package add-node-modules-path
+  :ensure t)
 
 (use-package web-mode
   :ensure t
@@ -185,7 +178,8 @@
   :init
   (defun web-mode-hooks ()
     "Hooks for web-mode"
-    (js2-minor-mode)
+    (add-node-modules-path)
+    (prettier-js-mode)
     (setq web-mode-content-type "jsx")
     (setq web-mode-enable-auto-quoting nil)
     (setq web-mode-code-indent-offset 2)
@@ -197,6 +191,15 @@
   (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
   (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+
+(use-package flycheck
+  :ensure t
+  :init
+  (setq-default flycheck-indication-mode nil)
+  (setq-default flycheck-disabled-checkers '(javascript-jshint))
+  :config
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (global-flycheck-mode))
 
 (use-package json-mode
   :ensure t
