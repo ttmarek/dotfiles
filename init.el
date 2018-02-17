@@ -8,6 +8,8 @@
 ;; 2. https://github.com/source-foundry/Hack#package-managers
 
 ;; --------------------------------------------------
+;; Highlight the current line
+(global-hl-line-mode +1)
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; Hollow cursor
