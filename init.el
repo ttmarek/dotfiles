@@ -189,7 +189,10 @@
     (setq web-mode-enable-auto-quoting nil)
     (setq web-mode-code-indent-offset 2)
     (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-attr-indent-offset 2))
+    (setq web-mode-attr-indent-offset 2)
+    (setq truncate-lines t)
+    (setq hscroll-margin 0)
+    (setq hscroll-step 1))
   (add-hook 'web-mode-hook 'web-mode-hooks)
   :config
   (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
