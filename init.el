@@ -100,6 +100,9 @@
 (use-package typescript-mode
   :ensure t
   :config
+  (setq truncate-lines t)
+  (setq hscroll-margin 0)
+  (setq hscroll-step 1)
   (setq typescript-indent-level 2))
 
 (use-package thesaurus
