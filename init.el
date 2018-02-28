@@ -99,11 +99,14 @@
 
 (use-package typescript-mode
   :ensure t
-  :config
-  (setq truncate-lines t)
-  (setq hscroll-margin 0)
-  (setq hscroll-step 1)
-  (setq typescript-indent-level 2))
+  :init
+  (defun ts-mode-hooks ()
+    "Hooks for typescript-mode"
+    (setq truncate-lines t)
+    (setq hscroll-margin 0)
+    (setq hscroll-step 1)
+    (setq typescript-indent-level 2))
+  (add-hook 'typescript-mode-hook 'ts-mode-hooks))
 
 (use-package thesaurus
   :ensure t
