@@ -218,6 +218,9 @@
   (defun json-mode-hooks ()
     "Hooks for json-mode"
     (make-local-variable 'js-indent-level)
+    (setq truncate-lines t)
+    (setq hscroll-margin 0)
+    (setq hscroll-step 1)
     (setq js-indent-level 2))
   (add-hook 'json-mode-hook 'json-mode-hooks))
 
