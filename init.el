@@ -174,11 +174,7 @@
   ("C-x t" . multi-term))
 
 (use-package prettier-js
-  :ensure t
-  :config
-  (setq prettier-js-args '("--single-quote" "true"
-                           "--trailing-comma" "all"
-                           "--bracket-spacing" "true")))
+  :ensure t)
 
 (use-package add-node-modules-path
   :ensure t)
