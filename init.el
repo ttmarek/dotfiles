@@ -97,15 +97,27 @@
 (use-package less-css-mode
   :ensure t)
 
+(use-package tide
+  :ensure t)
+
 (use-package typescript-mode
   :ensure t
+  :mode "\\.ts\\'"
   :init
   (defun ts-mode-hooks ()
     "Hooks for typescript-mode"
+    (interactive)
+    (add-node-modules-path)
+    (prettier-js-mode)
+    ;; Horizontal scrolling
     (setq truncate-lines t)
     (setq hscroll-margin 0)
     (setq hscroll-step 1)
-    (setq typescript-indent-level 2))
+    ;; Indentation
+    (setq typescript-indent-level 2)
+    ;; TIDE
+    (tide-setup)
+    (tide-hl-identifier-mode 1))
   (add-hook 'typescript-mode-hook 'ts-mode-hooks))
 
 (use-package thesaurus
