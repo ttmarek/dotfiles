@@ -78,7 +78,7 @@
 (use-package counsel-projectile
   :ensure t
   :init
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 (use-package projectile
   :ensure t
