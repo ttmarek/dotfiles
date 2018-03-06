@@ -90,10 +90,6 @@
   (setq term-scroll-to-bottom-on-output t)
   (setq term-suppress-hard-newline t))
 
-(use-package org-mode
-  :init
-  (setq org-startup-folded 'showall))
-
 (use-package less-css-mode
   :ensure t)
 
@@ -251,15 +247,36 @@
     (visual-line-mode))
   (add-hook 'markdown-mode-hook 'markdown-mode-hooks))
 
+(use-package telephone-line
+  :ensure t
+  :init
+  (defface my-red '((t (:foreground "white" :background "firebrick"))) "")
+
+  (setq telephone-line-faces
+        '((red . (my-red . my-red))
+          (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
+          (nil . (mode-line . mode-line-inactive))))
+
+  (setq telephone-line-lhs
+        '((red . (telephone-line-vc-segment
+                  telephone-line-erc-modified-channels-segment
+                  telephone-line-process-segment))
+          (accent . (telephone-line-buffer-segment))))
+  (setq telephone-line-rhs
+        '((nil    . (telephone-line-misc-info-segment))
+          (accent . (telephone-line-major-mode-segment))
+          (red   . (telephone-line-airline-position-segment))))
+  (telephone-line-mode 1))
+
 ;; Custom Functions
 ;; --------------------------------------------------
 (defun presenting-increase-font ()
-  "Increase font size for making presentations"
+  "Increase font size for making presentations."
   (interactive)
   (set-face-attribute 'default nil :height 250))
 
 (defun presenting-reset-font ()
-  "Reset font size after making presentations"
+  "Reset font size after making presentations."
   (interactive)
   (set-face-attribute 'default nil :font "inconsolata" :height 150))
 
