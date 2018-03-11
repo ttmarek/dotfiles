@@ -187,6 +187,9 @@
 (use-package add-node-modules-path
   :ensure t)
 
+(use-package import-js
+  :ensure t)
+
 (use-package web-mode
   :ensure t
   :mode "\\.js\\'"
@@ -195,6 +198,7 @@
     "Hooks for web-mode"
     (add-node-modules-path)
     (prettier-js-mode)
+    (run-import-js)
     (setq web-mode-content-type "jsx")
     (setq web-mode-enable-auto-quoting nil)
     (setq web-mode-code-indent-offset 2)
