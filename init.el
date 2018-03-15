@@ -254,22 +254,22 @@
 (use-package telephone-line
   :ensure t
   :init
-  (defface my-red '((t (:foreground "white" :background "firebrick"))) "")
+  (defface my-blue '((t (:foreground "white" :background "dark slate blue"))) "")
 
   (setq telephone-line-faces
-        '((red . (my-red . my-red))
+        '((blue . (my-blue . my-blue))
           (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
           (nil . (mode-line . mode-line-inactive))))
 
   (setq telephone-line-lhs
-        '((red . (telephone-line-vc-segment
+        '((blue . (telephone-line-vc-segment
                   telephone-line-erc-modified-channels-segment
                   telephone-line-process-segment))
           (accent . (telephone-line-buffer-segment))))
   (setq telephone-line-rhs
         '((nil    . (telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
-          (red   . (telephone-line-airline-position-segment))))
+          (blue   . (telephone-line-airline-position-segment))))
   (telephone-line-mode 1))
 
 ;; Custom Functions
